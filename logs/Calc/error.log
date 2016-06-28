@@ -1,0 +1,53 @@
+2016-06-17T14:18:46,508 [INFO ] (ConnectionPoolTest.java:38) - loginSYSTEM
+2016-06-17T14:18:46,511 [INFO ] (ConnectionPoolTest.java:39) - passadmin
+2016-06-17T14:18:46,511 [INFO ] (ConnectionPoolTest.java:40) - urljdbc:oracle:thin:@//localhost:1521:task1_db
+2016-06-17T14:18:48,938 [ERROR] (ConnectionPoolTest.java:53) - java.sql.SQLException: Io exception: The Network Adapter could not establish the connection
+2016-06-17T14:19:10,807 [INFO ] (ConnectionPoolTest.java:38) - loginsystem
+2016-06-17T14:19:10,810 [INFO ] (ConnectionPoolTest.java:39) - passadmin
+2016-06-17T14:19:10,810 [INFO ] (ConnectionPoolTest.java:40) - urljdbc:oracle:thin:@//localhost:1521:task1_db
+2016-06-17T14:19:13,283 [ERROR] (ConnectionPoolTest.java:53) - java.sql.SQLException: Io exception: The Network Adapter could not establish the connection
+2016-06-17T14:24:24,238 [INFO ] (ConnectionPoolTest.java:38) - loginsystem
+2016-06-17T14:24:24,241 [INFO ] (ConnectionPoolTest.java:39) - passadmin
+2016-06-17T14:24:24,241 [INFO ] (ConnectionPoolTest.java:40) - urljdbc:oracle:thin:@//localhost:1521:task1_db
+2016-06-17T14:24:26,615 [ERROR] (ConnectionPoolTest.java:53) - java.sql.SQLException: Io exception: The Network Adapter could not establish the connection
+2016-06-17T14:31:31,759 [INFO ] (ConnectionPoolTest.java:38) - loginsystem
+2016-06-17T14:31:31,761 [INFO ] (ConnectionPoolTest.java:39) - passadmin
+2016-06-17T14:31:31,762 [INFO ] (ConnectionPoolTest.java:40) - urljdbc:oracle:thin:@//localhost:1521:task1_db
+2016-06-17T14:31:34,189 [ERROR] (ConnectionPoolTest.java:53) - java.sql.SQLException: Io exception: The Network Adapter could not establish the connection
+2016-06-17T14:31:50,255 [INFO ] (ConnectionPoolTest.java:38) - loginsystem
+2016-06-17T14:31:50,258 [INFO ] (ConnectionPoolTest.java:39) - passadmin
+2016-06-17T14:31:50,258 [INFO ] (ConnectionPoolTest.java:40) - urljdbc:oracle:thin:@//localhost:1521:task1_db
+2016-06-17T14:31:52,673 [ERROR] (ConnectionPoolTest.java:53) - java.sql.SQLException: Io exception: The Network Adapter could not establish the connection
+2016-06-17T14:32:13,507 [INFO ] (ConnectionPoolTest.java:38) - loginsystem
+2016-06-17T14:32:13,510 [INFO ] (ConnectionPoolTest.java:39) - passadmin
+2016-06-17T14:32:13,511 [INFO ] (ConnectionPoolTest.java:40) - urljdbc:oracle:thin:@//localhost:1521:xe
+2016-06-17T14:32:15,981 [ERROR] (ConnectionPoolTest.java:53) - java.sql.SQLException: Io exception: The Network Adapter could not establish the connection
+2016-06-17T14:35:37,456 [INFO ] (ConnectionPoolTest.java:38) - loginsystem
+2016-06-17T14:35:37,458 [INFO ] (ConnectionPoolTest.java:39) - passadmin
+2016-06-17T14:35:37,458 [INFO ] (ConnectionPoolTest.java:40) - urljdbc:oracle:thin:@//localhost:1521:xe
+2016-06-17T14:35:40,096 [ERROR] (ConnectionPoolTest.java:55) - java.sql.SQLException: Io exception: The Network Adapter could not establish the connection
+2016-06-17T14:37:54,234 [INFO ] (ConnectionPoolTest.java:38) - loginsystem
+2016-06-17T14:37:54,237 [INFO ] (ConnectionPoolTest.java:39) - passadmin
+2016-06-17T14:37:54,238 [INFO ] (ConnectionPoolTest.java:40) - urljdbc:oracle:thin:@//localhost:1521:xe
+2016-06-17T14:37:56,609 [ERROR] (ConnectionPoolTest.java:53) - java.sql.SQLException: Io exception: The Network Adapter could not establish the connection
+2016-06-17T14:40:08,356 [INFO ] (ConnectionPoolTest.java:38) - loginsystem
+2016-06-17T14:40:08,358 [INFO ] (ConnectionPoolTest.java:39) - passadmin
+2016-06-17T14:40:08,359 [INFO ] (ConnectionPoolTest.java:40) - urljdbc:oracle:thin:@//localhost:1521:xe
+2016-06-17T14:40:10,780 [ERROR] (ConnectionPoolTest.java:53) - java.sql.SQLException: Io exception: The Network Adapter could not establish the connection
+2016-06-17T14:40:35,517 [INFO ] (ConnectionPoolTest.java:38) - loginsystem
+2016-06-17T14:40:35,520 [INFO ] (ConnectionPoolTest.java:39) - passadmin
+2016-06-17T14:40:35,520 [INFO ] (ConnectionPoolTest.java:40) - urljdbc:oracle:thin:@//localhost:1521:xe
+2016-06-17T14:40:37,945 [ERROR] (ConnectionPoolTest.java:53) - java.sql.SQLException: Io exception: The Network Adapter could not establish the connection
+2016-06-17T14:41:14,166 [INFO ] (ConnectionPoolTest.java:38) - loginsystem
+2016-06-17T14:41:14,169 [INFO ] (ConnectionPoolTest.java:39) - passadmin
+2016-06-17T14:41:14,169 [INFO ] (ConnectionPoolTest.java:40) - urljdbc:oracle:thin:@//localhost:1521/XE
+2016-06-17T15:58:27,534 [INFO ] (ConnectionPoolTest.java:38) - loginsystem
+2016-06-17T15:58:27,580 [INFO ] (ConnectionPoolTest.java:39) - passadmin
+2016-06-17T15:58:27,581 [INFO ] (ConnectionPoolTest.java:40) - urljdbc:oracle:thin:@//localhost:1521/XE
+2016-06-27T12:06:37,862 [FATAL] (NewsDaoImplTest.java:169) - by.epam.hubarevich.dao.exceptions.DAOException: java.sql.SQLException: Invalid column index
+2016-06-27T12:07:58,587 [FATAL] (NewsDaoImplTest.java:169) - by.epam.hubarevich.dao.exceptions.DAOException: java.sql.SQLException: ORA-00918: column ambiguously defined
+
+2016-06-27T12:32:20,658 [ERROR] (NewsDaoImplTest.java:197) - by.epam.hubarevich.dao.exceptions.DAOException: java.sql.SQLException: ORA-00904: "NA"."AUTHORS_ID": invalid identifier
+
+2016-06-27T12:32:59,994 [ERROR] (NewsDaoImplTest.java:197) - by.epam.hubarevich.dao.exceptions.DAOException: java.sql.SQLException: ORA-00918: column ambiguously defined
+
