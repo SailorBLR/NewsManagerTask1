@@ -1,6 +1,6 @@
 package test.by.epam.hubarevich.dao;
 
-import by.epam.hubarevich.dao.exceptions.DAOException;
+import by.epam.hubarevich.dao.exception.DAOException;
 import by.epam.hubarevich.dao.impl.AuthorDAOImpl;
 import by.epam.hubarevich.dao.impl.NewsDAOImpl;
 import by.epam.hubarevich.dao.impl.TagDAOImpl;
@@ -31,6 +31,8 @@ import static org.junit.Assert.assertEquals;
 
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
@@ -57,13 +59,12 @@ public class NewsDaoImplTest {
     @Autowired
     TagDAOImpl tagDAO = new TagDAOImpl();
 
-    @Transactional
-    @Rollback(true)
+
     @Test
     public void testCreate() {
         try {
             Date date = new Date(Calendar.getInstance().getTime().getTime());
-            News news = new News(1, "Test", "STExt", "FText", newsDAO.findDomainById(1).getNewsCreationDate(),
+            News news = new News(1, "Test", "STExt", "FText", Timestamp.valueOf(LocalDateTime.now()),
                     date);
             Assert.assertNotEquals(0, newsDAO.create(news));
         } catch (DAOException e) {
@@ -123,8 +124,6 @@ public class NewsDaoImplTest {
         }
     }
 
-    @Transactional
-    @Rollback(true)
     @Test
     public void testAddNewsAuthors() {
         try {
@@ -150,8 +149,6 @@ public class NewsDaoImplTest {
         }
     }
 
-    @Transactional
-    @Rollback(true)
     @Test
     public void testAddTagsNews() {
         try {

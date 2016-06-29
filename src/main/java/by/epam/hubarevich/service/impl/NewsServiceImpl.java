@@ -3,7 +3,7 @@ package by.epam.hubarevich.service.impl;
 import by.epam.hubarevich.dao.AuthorDAO;
 import by.epam.hubarevich.dao.NewsDAO;
 import by.epam.hubarevich.dao.TagDAO;
-import by.epam.hubarevich.dao.exceptions.DAOException;
+import by.epam.hubarevich.dao.exception.DAOException;
 import by.epam.hubarevich.dao.impl.AuthorDAOImpl;
 import by.epam.hubarevich.dao.impl.NewsDAOImpl;
 import by.epam.hubarevich.dao.impl.TagDAOImpl;
@@ -60,6 +60,7 @@ public class NewsServiceImpl implements NewsService {
         }
         return successMarker;
     }
+
 
     @Override
     public void deleteNews(int newsId) throws LogicException {

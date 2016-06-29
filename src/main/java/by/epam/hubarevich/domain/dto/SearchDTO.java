@@ -6,10 +6,22 @@ import by.epam.hubarevich.domain.Tag;
 import java.util.Set;
 
 /**
- * Created by Anton_Hubarevich on 6/20/2016.
+ * Class represents Search Criteria Object
+ * Serves to choose the search method for service layer
+ * @author Anton_Hubarevich
+ * @version 1.0
+ * @see Tag
+ * @see Author
  */
 public class SearchDTO {
+    /**
+     * Set of Tags to search
+     */
     private Set<Tag> tags;
+
+    /**
+     * Author to search
+     */
     private Author author;
 
 

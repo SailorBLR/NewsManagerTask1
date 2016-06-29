@@ -1,12 +1,12 @@
 package by.epam.hubarevich.dao.impl;
 
-import by.epam.hubarevich.dao.exceptions.DAOException;
+import by.epam.hubarevich.dao.exception.DAOException;
 import by.epam.hubarevich.dao.AuthorDAO;
-import by.epam.hubarevich.dao.QueryList;
+import by.epam.hubarevich.dao.util.ProxyConnection;
+import by.epam.hubarevich.dao.util.QueryList;
 import by.epam.hubarevich.domain.Author;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -17,20 +17,25 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by Anton_Hubarevich on 6/20/2016.
+ * Implementation of AuthorDAO. Contains methods realisations
+ * @author Anton_Hubarevich
+ * @version 1.0
  */
 @Component
 public class AuthorDAOImpl implements AuthorDAO {
 
     @Autowired
-    BasicDataSource dataSource;
+    private BasicDataSource dataSource;
 
+    /**
+     * @return List of all Authors from database
+     * @throws DAOException if SQLException thrown
+     */
     @Override
     public Set<Author> findAll() throws DAOException {
-
         Author author;
         Set<Author> authors = new HashSet<Author>();
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.FIND_ALL_AUTHORS.getValue())) {
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -42,7 +47,7 @@ public class AuthorDAOImpl implements AuthorDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DAOException(e);
         }
         return authors;
     }
@@ -51,7 +56,7 @@ public class AuthorDAOImpl implements AuthorDAO {
     @Override
     public Author findDomainById(int id) throws DAOException {
         Author author = null;
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.FIND_AUTHOR_BY_ID.getValue())) {
             preparedStatement.setInt(1, id);
@@ -69,7 +74,7 @@ public class AuthorDAOImpl implements AuthorDAO {
     @Override
     public void delete(int id) throws DAOException {
 
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement =
                      connection.prepareStatement(QueryList.DELETE_AUTHOR.getValue())) {
             preparedStatement.setInt(1, id);
@@ -82,7 +87,7 @@ public class AuthorDAOImpl implements AuthorDAO {
     @Override
     public int create(Author author) throws DAOException {
         int authorId = 0;
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement =
                      connection.prepareStatement(QueryList.CREATE_NEW_AUTHOR.getValue(),
                              new String[]{AUTHOR_COLUMNS.AUTHOR_ID.name()})) {
@@ -100,7 +105,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 
     @Override
     public void update(Author author) throws DAOException {
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement =
                      connection.prepareStatement(QueryList.UPDATE_AUTHOR.getValue())) {
             preparedStatement.setString(1, author.getAuthorName());
@@ -115,9 +120,9 @@ public class AuthorDAOImpl implements AuthorDAO {
     @Override
     public Author findAuthorByName(String authorName) throws DAOException {
         Author author = null;
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
-                     = connection.prepareStatement(QueryList.FIND_AUTHOR_BY_NAME.getValue());) {
+                     = connection.prepareStatement(QueryList.FIND_AUTHOR_BY_NAME.getValue())) {
             preparedStatement.setString(1, authorName);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -134,7 +139,7 @@ public class AuthorDAOImpl implements AuthorDAO {
     @Override
     public Author findAuthorByNewsId(int newsId) throws DAOException {
         Author author = null;
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement =
                      connection.prepareStatement(QueryList.FIND_AUTHORS_BY_NEWS_ID.getValue())) {
             preparedStatement.setInt(1, newsId);

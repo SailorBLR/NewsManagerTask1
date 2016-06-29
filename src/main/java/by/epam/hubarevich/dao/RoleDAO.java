@@ -1,7 +1,9 @@
 package by.epam.hubarevich.dao;
 
 /**
- * Created by Anton_Hubarevich on 6/20/2016.
+ * Interface for Role operations
+ * @author Anton_Hubarevich
+ * @version 1.0
  */
 public interface RoleDAO extends AbstractDAO<by.epam.hubarevich.domain.Role> {
 }

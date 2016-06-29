@@ -1,7 +1,7 @@
 package by.epam.hubarevich.service.impl;
 
 import by.epam.hubarevich.dao.AuthorDAO;
-import by.epam.hubarevich.dao.exceptions.DAOException;
+import by.epam.hubarevich.dao.exception.DAOException;
 import by.epam.hubarevich.dao.impl.AuthorDAOImpl;
 import by.epam.hubarevich.domain.Author;
 import by.epam.hubarevich.service.AuthorService;
@@ -9,7 +9,6 @@ import by.epam.hubarevich.service.exception.LogicException;
 import by.epam.hubarevich.utils.AuthorCheckUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashSet;
 import java.util.Set;
 
 /**

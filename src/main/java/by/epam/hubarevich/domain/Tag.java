@@ -1,16 +1,31 @@
 package by.epam.hubarevich.domain;
 
 /**
- * Created by Anton_Hubarevich on 6/20/2016.
+ * Class used to represent Tag entity
+ * @author Anton_Hubarevich
+ * @version 1.0
  */
-public class Tag extends Domain {
 
+public class Tag extends Domain {
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * Unique tag identifier
+     */
     private Integer tagId;
+    /**
+     * Tag name
+     */
     private String tagName;
 
     public Tag() {
     }
 
+    /**
+     * Constructor
+     * @param tagId positive Integer value
+     * @param tagName String value. Limit 30 symbols
+     */
     public Tag(Integer tagId, String tagName) {
         this.tagId = tagId;
         this.tagName = tagName;

@@ -1,13 +1,12 @@
 package by.epam.hubarevich.dao.impl;
 
-import by.epam.hubarevich.dao.AbstractDAO;
-import by.epam.hubarevich.dao.QueryList;
+import by.epam.hubarevich.dao.util.ProxyConnection;
+import by.epam.hubarevich.dao.util.QueryList;
 import by.epam.hubarevich.dao.TagDAO;
-import by.epam.hubarevich.dao.exceptions.DAOException;
+import by.epam.hubarevich.dao.exception.DAOException;
 import by.epam.hubarevich.domain.Tag;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -15,17 +14,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
- * Created by Anton_Hubarevich on 6/20/2016.
+ * Implementation of TagDAO. Contains methods realisations
+ * @author Anton_Hubarevich
+ * @version 1.0
  */
 @Component
 public class TagDAOImpl implements TagDAO {
 
     @Autowired
-    BasicDataSource dataSource;
+    private BasicDataSource dataSource;
 
     @Override
     public Set<Tag> findAll() throws DAOException {
@@ -55,7 +55,7 @@ public class TagDAOImpl implements TagDAO {
 
         Set<Tag> tags = new HashSet<Tag>();
         Tag tag = new Tag();
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.FIND_TAGS_BY_NEWS_ID.getValue())) {
             preparedStatement.setInt(1,newsId);

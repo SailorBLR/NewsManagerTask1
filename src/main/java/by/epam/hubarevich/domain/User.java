@@ -1,17 +1,41 @@
 package by.epam.hubarevich.domain;
 
 /**
- * Created by Anton_Hubarevich on 6/20/2016.
+ * Class used to represent User entity
+ * @author Anton_Hubarevich
+ * @version 1.0
  */
-public class User extends Domain {
 
+public class User extends Domain {
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * User unique identifier
+     */
     private Integer userId;
+    /**
+     * user name
+     */
     private String userName;
+    /**
+     * user unique login
+     */
     private String userLogin;
+    /**
+     * user password
+     */
     private String userPassword;
 
     public User() {
     }
+
+    /***
+     * user constructor
+     * @param userId positive Integer value
+     * @param userName String value. Limit 50 symbols
+     * @param userLogin String value. Limit 30 symbols
+     * @param userPassword String value. Limit 30 symbols
+     */
 
     public User(Integer userId, String userName, String userLogin, String userPassword) {
         this.userId = userId;

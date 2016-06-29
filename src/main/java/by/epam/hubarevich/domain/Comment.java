@@ -3,18 +3,41 @@ package by.epam.hubarevich.domain;
 import java.sql.Timestamp;
 
 /**
- * Created by Anton_Hubarevich on 6/20/2016.
+ * Class used to represent Comment entity
+ * @author Anton_Hubarevich
+ * @version 1.0
  */
-public class Comment extends Domain {
 
+public class Comment extends Domain {
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * Comment identifier
+     */
     private Integer commentId;
+    /**
+     * News message identifier
+     */
     private Integer newsId;
+    /**
+     * Comment text
+     */
     private String commentText;
+    /**
+     * Comment creation date
+     */
     private Timestamp commentCreationDate;
 
     public Comment() {
     }
 
+    /**
+     * Comment constructor
+     * @param commentId positive Integer value
+     * @param newsId positive Integer value
+     * @param commentText String value. Limit 100 symbols
+     * @param commentCreationDate Timestamp value
+     */
     public Comment(Integer commentId, Integer newsId, String commentText, Timestamp commentCreationDate) {
         this.commentId = commentId;
         this.newsId = newsId;

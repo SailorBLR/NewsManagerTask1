@@ -4,19 +4,50 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Anton_Hubarevich on 6/20/2016.
+ * Class used to represent News message entity
+ * @author Anton_Hubarevich
+ * @version 1.0
  */
+
 public class News extends Domain {
+    private static final long serialVersionUID = 1L;
+    /**
+     * News message identifier
+     */
     private Integer newsId;
+    /**
+     * News message title
+     */
     private String title;
+    /**
+     * News message short text message
+     */
     private String shortText;
+    /**
+     * News message full text message
+     */
     private String fullText;
+    /**
+     * News message creation date
+     */
     private Timestamp newsCreationDate;
+    /**
+     * News message modification date
+     */
     private Date newsModificationDate;
 
     public News() {
     }
 
+    /**
+     * News messge constructor
+     * @param newsId positive Integer value
+     * @param title String value. Limit 30 symbols
+     * @param shortText String value. Limit 100 symbols
+     * @param fullText String value. Limit 2000 symbols
+     * @param newsCreationDate Timestamp value. News message creation date
+     * @param newsModificationDate Date value. News message modification date
+     */
     public News(Integer newsId, String title, String shortText, String fullText,
                 Timestamp newsCreationDate, Date newsModificationDate) {
         this.newsId = newsId;

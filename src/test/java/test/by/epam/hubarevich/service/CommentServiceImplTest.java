@@ -1,10 +1,8 @@
 package test.by.epam.hubarevich.service;
 
 import by.epam.hubarevich.dao.CommentDAO;
-import by.epam.hubarevich.dao.exceptions.DAOException;
-import by.epam.hubarevich.domain.Author;
+import by.epam.hubarevich.dao.exception.DAOException;
 import by.epam.hubarevich.domain.Comment;
-import by.epam.hubarevich.domain.Domain;
 import by.epam.hubarevich.service.exception.LogicException;
 import by.epam.hubarevich.service.impl.CommentServiceImpl;
 import by.epam.hubarevich.utils.TimestamperUtil;
@@ -20,7 +18,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.testng.annotations.BeforeMethod;
 
 import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 

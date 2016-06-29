@@ -1,8 +1,9 @@
-package by.epam.hubarevich.dao;
+package by.epam.hubarevich.dao.util;
 
 /**
- * Created by Anton_Hubarevich on 6/20/2016.
+ * Enum list of SQL-queries
  */
+
 public enum QueryList {
 
     CREATE_NEW_AUTHOR("INSERT INTO authors (author_name) VALUES (?)"),

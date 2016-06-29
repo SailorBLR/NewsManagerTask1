@@ -1,16 +1,30 @@
 package by.epam.hubarevich.domain;
 
 /**
- * Created by Anton_Hubarevich on 6/20/2016.
+ * Class used to represent Role entity
+ * @author Anton_Hubarevich
+ * @version 1.0
  */
 public class Role extends Domain {
+    private static final long serialVersionUID = 1L;
 
+    /**
+     * Unique role identifier
+     */
     private Integer roleId;
+    /**
+     * Role name. Represents user role
+     */
     private String roleName;
 
     public Role() {
     }
 
+    /**
+     * Constructor
+     * @param roleId positive Integer value
+     * @param roleName String value. Limit 50 symbols
+     */
     public Role(Integer roleId, String roleName) {
         this.roleId = roleId;
         this.roleName = roleName;

@@ -10,6 +10,8 @@
         <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
         <property name="username" value="Anton"/>
         <property name="password" value="Anton"/>
+        <property name="maxActive" value="1000"/>
+        <property name="maxWait" value="1000"/>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

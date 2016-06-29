@@ -1,38 +1,34 @@
 package by.epam.hubarevich.dao.impl;
 
-import by.epam.hubarevich.dao.QueryList;
-import by.epam.hubarevich.dao.exceptions.DAOException;
-import by.epam.hubarevich.dao.AbstractDAO;
+import by.epam.hubarevich.dao.util.ProxyConnection;
+import by.epam.hubarevich.dao.util.QueryList;
+import by.epam.hubarevich.dao.exception.DAOException;
 import by.epam.hubarevich.dao.CommentDAO;
 import by.epam.hubarevich.domain.Comment;
-import com.sun.org.apache.bcel.internal.generic.DDIV;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Component;
-import sun.text.resources.no.CollationData_no;
 
-import javax.naming.ldap.PagedResultsControl;
 import java.sql.*;
-import java.util.Calendar;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
- * Created by Anton_Hubarevich on 6/20/2016.
+ * Implementation of CommentDAO. Contains methods realisations
+ * @author Anton_Hubarevich
+ * @version 1.0
  */
 @Component
 public class CommentDAOImpl implements CommentDAO {
 
     @Autowired
-    BasicDataSource dataSource;
+    private BasicDataSource dataSource;
 
     @Override
     public Set<Comment> findAll() throws DAOException {
         Comment comment = new Comment();
         Set<Comment> comments = new HashSet<>();
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.FIND_ALL_COMMENTS.getValue())) {
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -51,7 +47,7 @@ public class CommentDAOImpl implements CommentDAO {
     @Override
     public Comment findDomainById(int id) throws DAOException {
         Comment comment = null;
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.FIND_COMMENT_BY_ID.getValue())) {
 
@@ -70,7 +66,7 @@ public class CommentDAOImpl implements CommentDAO {
 
     @Override
     public void delete(int id) throws DAOException {
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.DELETE_COMMENT.getValue())) {
 
@@ -85,7 +81,7 @@ public class CommentDAOImpl implements CommentDAO {
     public int create(Comment comment) throws DAOException {
         int commentId = 0;
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.ADD_COMMENT_TO_NEWS.getValue(),new String[]{COMMENTS_COLUMNS.COMMENT_ID.name()})) {
 
@@ -109,7 +105,7 @@ public class CommentDAOImpl implements CommentDAO {
 
     @Override
     public void update(Comment comment) throws DAOException {
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.UPDATE_COMMENT.getValue())) {
 
@@ -126,7 +122,7 @@ public class CommentDAOImpl implements CommentDAO {
     public Set<Comment> findCommentsByNewsId(int newsId) throws DAOException{
         Comment comment = new Comment();
         Set<Comment> comments = new HashSet<>();
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.FIND_COMMENT_BY_NEWS_ID.getValue())) {
             preparedStatement.setInt(1,newsId);
@@ -147,6 +143,13 @@ public class CommentDAOImpl implements CommentDAO {
     public Set<Comment> findCommentsByUserId(int authorId) {
         return null;
     }
+
+    /**
+     * Creates and configures the Comment object
+     * @param resultSet ResultSet object
+     * @param comment Comment object
+     * @throws SQLException
+     */
 
     private void configComment(ResultSet resultSet, Comment comment) throws SQLException {
         comment.setCommentId(resultSet.getInt(COMMENTS_COLUMNS.COMMENT_ID.name()));

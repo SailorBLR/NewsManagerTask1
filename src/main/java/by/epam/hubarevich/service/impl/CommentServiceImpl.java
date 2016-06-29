@@ -2,7 +2,7 @@ package by.epam.hubarevich.service.impl;
 
 import by.epam.hubarevich.dao.CommentDAO;
 import by.epam.hubarevich.dao.NewsDAO;
-import by.epam.hubarevich.dao.exceptions.DAOException;
+import by.epam.hubarevich.dao.exception.DAOException;
 import by.epam.hubarevich.dao.impl.CommentDAOImpl;
 import by.epam.hubarevich.dao.impl.NewsDAOImpl;
 import by.epam.hubarevich.domain.Comment;

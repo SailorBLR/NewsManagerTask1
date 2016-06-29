@@ -1,4 +1,4 @@
-package by.epam.hubarevich.dao.exceptions;
+package by.epam.hubarevich.dao.exception;
 
 /**
  * Created by Anton_Hubarevich on 6/17/2016.

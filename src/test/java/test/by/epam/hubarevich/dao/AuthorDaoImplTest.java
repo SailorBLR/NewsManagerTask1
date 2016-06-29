@@ -1,6 +1,6 @@
 package test.by.epam.hubarevich.dao;
 
-import by.epam.hubarevich.dao.exceptions.DAOException;
+import by.epam.hubarevich.dao.exception.DAOException;
 import by.epam.hubarevich.dao.impl.AuthorDAOImpl;
 import by.epam.hubarevich.domain.Author;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
@@ -46,8 +46,6 @@ public class AuthorDaoImplTest {
     @Autowired
     private AuthorDAOImpl authorDAO;
 
-    @Transactional
-    @Rollback(true)
     @Test
     public void testCreate() {
         try {

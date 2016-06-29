@@ -1,15 +1,15 @@
 package by.epam.hubarevich.dao.impl;
 
 import by.epam.hubarevich.dao.NewsDAO;
-import by.epam.hubarevich.dao.QueryList;
-import by.epam.hubarevich.dao.exceptions.DAOException;
+import by.epam.hubarevich.dao.util.ProxyConnection;
+import by.epam.hubarevich.dao.util.QueryList;
+import by.epam.hubarevich.dao.exception.DAOException;
 import by.epam.hubarevich.domain.Author;
 import by.epam.hubarevich.domain.News;
 import by.epam.hubarevich.domain.Tag;
 import by.epam.hubarevich.utils.TimestamperUtil;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
@@ -18,19 +18,22 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by Anton_Hubarevich on 6/20/2016.
+ * Implementation of NewsDAO. Contains methods realisations
+ * @author Anton_Hubarevich
+ * @version 1.0
  */
 @Component
 public class NewsDAOImpl implements NewsDAO {
 
     @Autowired
-    BasicDataSource dataSource;
+    private BasicDataSource dataSource;
+
 
     @Override
     public Set<News> findAll() throws DAOException {
-        Set<News> newses = new HashSet<News>();
+        Set<News> newses = new HashSet<>();
         News news;
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.FIND_ALL_NEWS.getValue())) {
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -51,7 +54,7 @@ public class NewsDAOImpl implements NewsDAO {
     public News findDomainById(int id) throws DAOException {
 
         News news = null;
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement =
                      connection.prepareStatement(QueryList.FIND_NEWS_BY_ID.getValue())) {
             preparedStatement.setInt(1, id);
@@ -69,7 +72,7 @@ public class NewsDAOImpl implements NewsDAO {
     @Override
     public void delete(int id) throws DAOException {
 
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.DELETE_NEWS.getValue())) {
             preparedStatement.setInt(1, id);
@@ -84,7 +87,7 @@ public class NewsDAOImpl implements NewsDAO {
     public int create(News news) throws DAOException {
 
         int newsId = 0;
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.CREATE_NEWS.getValue(),
                      new String[]{NEWS_COLUMNS.NEWS_ID.name()})) {
@@ -109,7 +112,7 @@ public class NewsDAOImpl implements NewsDAO {
     public void update(News news) throws DAOException {
 
         Date date = new Date(Calendar.getInstance().getTime().getTime());
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.UPDATE_NEWS.getValue())) {
             preparedStatement.setString(1, news.getTitle());
@@ -127,7 +130,7 @@ public class NewsDAOImpl implements NewsDAO {
     @Override
     public void addNewsAuthor(int newsId, int authorId) throws DAOException {
 
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.ADD_AUTHOR_TO_NEWS.getValue())) {
             preparedStatement.setInt(1, newsId);
@@ -144,7 +147,7 @@ public class NewsDAOImpl implements NewsDAO {
 
         Set<News> newses = new HashSet<>();
         News news = new News();
-        try (Connection connection = dataSource.getConnection();
+        try (Connection connection = ProxyConnection.getConnection(dataSource);
              PreparedStatement preparedStatement
                      = connection.prepareStatement(QueryList.GET_MOST_COMMENTED_NEWS.getValue())) {
             preparedStatement.setInt(1, newsQuantity);
@@ -164,7 +167,7 @@ public class NewsDAOImpl implements NewsDAO {
     @Override
     public void addTagsNews(int newsId, Set<Tag> tags) throws DAOException {
 
-        try (Connection connection = dataSource.getConnection(); PreparedStatement preparedStatement
+        try (Connection connection = ProxyConnection.getConnection(dataSource); PreparedStatement preparedStatement
                 = connection.prepareStatement(QueryList.ADD_TAG_TO_NEWS.getValue())) {
             for (Tag tag : tags) {
                 preparedStatement.setInt(1, newsId);
@@ -179,7 +182,7 @@ public class NewsDAOImpl implements NewsDAO {
     @Override
     public Set<News> findNewsByAuthor(Author author) throws DAOException {
         Set<News> newses = new HashSet<>();
-        try (Connection connection = dataSource.getConnection(); PreparedStatement preparedStatement
+        try (Connection connection = ProxyConnection.getConnection(dataSource); PreparedStatement preparedStatement
                 = connection.prepareStatement(QueryList.FIND_NEWS_BY_AUTHOR.getValue())) {
             preparedStatement.setInt(1, author.getAuthorId());
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -201,7 +204,7 @@ public class NewsDAOImpl implements NewsDAO {
         for (int i=0;i<tags.size()-1;i++) {
             query = query.concat(QueryList.ANOTHER_TAG.getValue());
         }
-        try (Connection connection=dataSource.getConnection(); PreparedStatement preparedStatement
+        try (Connection connection = ProxyConnection.getConnection(dataSource); PreparedStatement preparedStatement
                 =connection.prepareStatement(QueryList.FIND_NEWS_BY_TAGS.getValue())) {
             for (int i=1;i<tags.size();i++){
                 preparedStatement.setInt(i,tags.iterator().next().getTagId());

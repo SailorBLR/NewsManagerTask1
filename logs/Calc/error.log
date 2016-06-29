@@ -44,10 +44,20 @@
 2016-06-17T15:58:27,534 [INFO ] (ConnectionPoolTest.java:38) - loginsystem
 2016-06-17T15:58:27,580 [INFO ] (ConnectionPoolTest.java:39) - passadmin
 2016-06-17T15:58:27,581 [INFO ] (ConnectionPoolTest.java:40) - urljdbc:oracle:thin:@//localhost:1521/XE
-2016-06-27T12:06:37,862 [FATAL] (NewsDaoImplTest.java:169) - by.epam.hubarevich.dao.exceptions.DAOException: java.sql.SQLException: Invalid column index
-2016-06-27T12:07:58,587 [FATAL] (NewsDaoImplTest.java:169) - by.epam.hubarevich.dao.exceptions.DAOException: java.sql.SQLException: ORA-00918: column ambiguously defined
+2016-06-27T12:06:37,862 [FATAL] (NewsDaoImplTest.java:169) - by.epam.hubarevich.dao.exception.DAOException: java.sql.SQLException: Invalid column index
+2016-06-27T12:07:58,587 [FATAL] (NewsDaoImplTest.java:169) - by.epam.hubarevich.dao.exception.DAOException: java.sql.SQLException: ORA-00918: column ambiguously defined
 
-2016-06-27T12:32:20,658 [ERROR] (NewsDaoImplTest.java:197) - by.epam.hubarevich.dao.exceptions.DAOException: java.sql.SQLException: ORA-00904: "NA"."AUTHORS_ID": invalid identifier
+2016-06-27T12:32:20,658 [ERROR] (NewsDaoImplTest.java:197) - by.epam.hubarevich.dao.exception.DAOException: java.sql.SQLException: ORA-00904: "NA"."AUTHORS_ID": invalid identifier
 
-2016-06-27T12:32:59,994 [ERROR] (NewsDaoImplTest.java:197) - by.epam.hubarevich.dao.exceptions.DAOException: java.sql.SQLException: ORA-00918: column ambiguously defined
+2016-06-27T12:32:59,994 [ERROR] (NewsDaoImplTest.java:197) - by.epam.hubarevich.dao.exception.DAOException: java.sql.SQLException: ORA-00918: column ambiguously defined
 
+2016-06-29T13:47:11,512 [ERROR] (NewsDaoImplTest.java:134) - by.epam.hubarevich.dao.exception.DAOException: java.sql.SQLException: Connection is closed.
+2016-06-29T13:47:11,717 [ERROR] (NewsDaoImplTest.java:69) - by.epam.hubarevich.dao.exception.DAOException: java.sql.SQLException: Connection is closed.
+2016-06-29T13:47:11,898 [ERROR] (NewsDaoImplTest.java:165) - by.epam.hubarevich.dao.exception.DAOException: java.sql.SQLException: Connection is closed.
+2016-06-29T13:52:14,749 [ERROR] (NewsDaoImplTest.java:134) - by.epam.hubarevich.dao.exception.DAOException: java.sql.SQLException: Connection is closed.
+2016-06-29T13:52:15,007 [ERROR] (NewsDaoImplTest.java:69) - by.epam.hubarevich.dao.exception.DAOException: java.sql.SQLException: Connection is closed.
+2016-06-29T13:52:15,169 [ERROR] (NewsDaoImplTest.java:165) - by.epam.hubarevich.dao.exception.DAOException: java.sql.SQLException: Connection is closed.
+2016-06-29T13:56:53,514 [ERROR] (NewsDaoImplTest.java:69) - by.epam.hubarevich.dao.exception.DAOException: java.sql.SQLException: Connection is closed.
+2016-06-29T14:04:20,291 [ERROR] (NewsDaoImplTest.java:134) - by.epam.hubarevich.dao.exception.DAOException: java.sql.SQLException: Connection is closed.
+2016-06-29T14:04:20,520 [ERROR] (NewsDaoImplTest.java:69) - by.epam.hubarevich.dao.exception.DAOException: java.sql.SQLException: Connection is closed.
+2016-06-29T14:04:20,780 [ERROR] (NewsDaoImplTest.java:165) - by.epam.hubarevich.dao.exception.DAOException: java.sql.SQLException: Connection is closed.

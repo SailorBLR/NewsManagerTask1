@@ -8,13 +8,30 @@ import by.epam.hubarevich.domain.Tag;
 import java.util.Set;
 
 /**
- * Created by Anton_Hubarevich on 6/20/2016.
+ * Class represents Data Transfer Object
+ * Used to transfer data corresponded to News message
+ * @author Anton_Hubarevich
+ * @version 1.0
  */
 public class NewsDTO {
 
+    /**
+     * News message object
+     */
     private News news;
+    /**
+     * Author object
+     */
     private Author author;
+    /**
+     * Set of Tag objects
+     */
     private Set<Tag> tags;
+
+    /**
+     * Set of Comment objects
+     */
+
     private Set<Comment> comments;
 
     public News getNews() {

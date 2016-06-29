@@ -1,18 +1,43 @@
 package by.epam.hubarevich.domain;
 
+import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;
+
 import java.sql.Timestamp;
 
 /**
- * Created by Anton_Hubarevich on 6/20/2016.
+ * Class used to represent Author entity
+ * @author Anton_Hubarevich
+ * @version 1.0
  */
-public class Author extends Domain {
 
+public class Author extends Domain {
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * Author identifier
+     */
+    @Required
     private Integer authorId;
+    /**
+     * Author name
+     */
+    @Required
     private String authorName;
+
+    /**
+     * Author expiration date
+     * NULL if is not expired
+     */
     private Timestamp expired;
 
     public Author() {
     }
+
+    /**
+     * Author constructor
+     * @param authorId positive Integer identifier
+     * @param authorName String value. Limit 30 symbols
+     */
 
     public Author(Integer authorId, String authorName) {
         this.authorId = authorId;

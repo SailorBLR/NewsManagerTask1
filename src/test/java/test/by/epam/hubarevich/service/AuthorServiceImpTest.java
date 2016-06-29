@@ -1,12 +1,8 @@
 package test.by.epam.hubarevich.service;
 
 import by.epam.hubarevich.dao.AuthorDAO;
-import by.epam.hubarevich.dao.NewsDAO;
-import by.epam.hubarevich.dao.exceptions.DAOException;
+import by.epam.hubarevich.dao.exception.DAOException;
 import by.epam.hubarevich.domain.Author;
-import by.epam.hubarevich.domain.News;
-import by.epam.hubarevich.domain.Tag;
-import by.epam.hubarevich.domain.dto.NewsDTO;
 import by.epam.hubarevich.service.exception.LogicException;
 import by.epam.hubarevich.service.impl.AuthorServiceImpl;
 import org.apache.logging.log4j.LogManager;
